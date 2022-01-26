@@ -1,17 +1,13 @@
 const express = require('express')
 const app = express();
 
-app.get('/', function (req, res) {
-    // create html responce
-    res.send('<a href="/about">About Us Page</a> <br> <a href="/contact">Contact Us</a>')
+app.get('/user/:username',  (req, res)=> {
+    // get parameter data from addressrow
+    let user = req.params.username;
+    // use this data in template
+    res.render('index.ejs', {username : user});
 });
 
-app.get('/', function (req, res) {
-    res.send('<h1>About Us Page</h1>')
-})
-
-app.get('/', function (req, res) {
-    res.send('<h1>Contact Us Page</h1>')
-})
-
-app.listen(3000)
+app.listen(3000, ()=> {
+    console.log('Server started on http://localhost:3000/');
+});
