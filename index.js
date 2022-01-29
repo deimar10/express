@@ -3,6 +3,10 @@ const app = express();
 
 const path = require('path')
 
+// body-parseri lisamine koodi
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({extended:true}));
+
 // add views directory path
 app.set('views', path.join(__dirname, 'views'));
 // add views templage engine
@@ -18,6 +22,7 @@ app.get('/login',  (req, res)=> {
 
 app.post('/login', (req, res)=>{
     console.log('post request done')
+    console.log(req.body)
 });
 
 app.listen(3000, ()=> {
