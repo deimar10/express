@@ -25,6 +25,19 @@ app.post('/login', (req, res)=>{
     console.log(req.body)
 });
 
+app.post('/login', (req, res)=>{
+    let username = req.body.username
+    let password = req.body.password
+
+    if (username === 'user' && password === 'qwerty'){
+        res.redirect('/dashboard');
+    }
+});
+
+app.get('/dashboard',  (req, res)=> {
+    res.render('dashboard')
+})
+
 app.listen(3000, ()=> {
     console.log('Server started on http://localhost:3000/');
 });
